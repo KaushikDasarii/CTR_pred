@@ -12,8 +12,9 @@ label_encoders = joblib.load("model/label_encoders.pkl")
 
 #  User Input Form
 with st.form("input_form"):
-    valid_site_id = label_encoders["site_id"].classes_.tolist()
-    device_model = st.selectbox("Site ID", valid_site_id)
+    valid_site_ids = label_encoders["site_id"].classes_.tolist()
+    site_id = st.selectbox(" Site ID", valid_site_ids)
+
     valid_device_models = label_encoders["device_model"].classes_.tolist()
     device_model = st.selectbox("Device Model", valid_device_models)
     hour = st.slider("Hour of the Day", 0, 23, 13)
