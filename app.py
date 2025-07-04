@@ -13,8 +13,8 @@ label_encoders = joblib.load("model/label_encoders.pkl")
 #  User Input Form
 with st.form("input_form"):
     site_id = st.selectbox(" Site ID", ['1fbe01fe', '85f751fd', 'e151e245', 'fe6b92e5'])
-    device_model = st.selectbox(" Device Model", ['dlcecap1', 'dlcecap2', 'rmx1001', 'iphone12'])
-    
+    valid_device_models = label_encoders["device_model"].classes_.tolist()
+    device_model = st.selectbox("📱 Device Model", valid_device_models)
     hour = st.slider("Hour of the Day", 0, 23, 13)
     banner_pos = st.selectbox(" Banner Position", [0, 1, 2, 3])
     device_type = st.selectbox("Device Type", [1, 2, 4])
